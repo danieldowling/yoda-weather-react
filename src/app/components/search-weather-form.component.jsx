@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import axios from 'axios';
 
 class SearchWeatherForm extends React.Component {
   constructor(props) {
@@ -15,7 +15,14 @@ class SearchWeatherForm extends React.Component {
   }
 
   handleSubmit(event) {
+    const params = {city: this.state.value}
     alert('A city name was submitted: ' + this.state.value);
+
+    axios.get(`http://localhost:3001/weather/${params.city}`)
+      .then(res => {
+        console.log(res.data.weather[0].description)
+      })
+
     event.preventDefault();
   }
 
