@@ -20,18 +20,18 @@ app.use(function (req, res, next) {
     next();
 });
 
+
 app.get('/weather/:city',(req, response) => {
     request(`https://api.openweathermap.org/data/2.5/weather?q=${req.params.city}&appid=${WEATHER_API}`, (err, res, body) => {
-        response.send(body)
-        console.log(req.params);
+    const data = JSON.parse(res.body)    
+    response.json(data.weather[0].description)
     })
 })
 
 
-
 app.post('/yoda', (req, response) => {
     const options = {
-        url: `https://yodish.p.mashape.com/yoda.json?text=${req.query.forcast}`,
+        url: `https://yodish.p.mashape.com/yoda.json?text=${req.query.forecast}`,
         headers: {
             'X-Mashape-Key': YODA_API,
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -39,8 +39,9 @@ app.post('/yoda', (req, response) => {
     }
     
     request(options, (err, res, body) => {
-        response.send(body)
-        console.log(req.params);
+        const data = JSON.parse(res.body)
+        response.send(data.contents.translated)
+        console.log(data.contents.translated)
     })
 })
 

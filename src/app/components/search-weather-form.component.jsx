@@ -16,28 +16,21 @@ class SearchWeatherForm extends React.Component {
 
   handleSubmit(event) {
     const params = {city: this.state.value}
-    const forcast = {
-      forcast: ''
+      
+    async function yodaSpeak() {
+        const weather = await axios.get(`http://localhost:3001/weather/${params.city}`)
+    
+        console.log(weather)
+        let forecastString = `The weather is ${weather.data} in ${params.city}`
+        axios.post(`http://localhost:3001/yoda/?forecast=${forecastString}`)
+          .then(res => {
+            console.log(res.data)
+            return res.data
+          })
     }
-    
-    alert('A city name was submitted: ' + this.state.value);
-    
-    let forcastString = `The weather is ${forcast.forcast} in ${params.city}`
-    axios.get(`http://localhost:3001/weather/${params.city}`)
-    .then(res => {
-        forcast.forcast = res.data.weather[0].description.toString()
-        forcastString = `The weather is ${forcast.forcast} in ${params.city}`
-        console.log(forcast.forcast)
-        console.log(forcastString)
-        axios.post(`http://localhost:3001/yoda/?forcast=${forcastString}`)
-      })
-
-    
-
-      
-      
 
     event.preventDefault();
+    yodaSpeak();
   }
 
   render() {
