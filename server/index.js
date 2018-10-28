@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 
 const WEATHER_API = process.env.WEATHER_API;
+const YODA_API = process.env.YODA_API;
 
 console.log(WEATHER_API)
 
@@ -26,8 +27,18 @@ app.get('/weather/:city',(req, response) => {
     })
 })
 
-app.post('/yoda/:forcast', (req, response) => {
-    request(`https://yodish.p.mashape.com/yoda.json?text=${req.params.forcast}`, (err, res, body) => {
+
+
+app.post('/yoda', (req, response) => {
+    const options = {
+        url: `https://yodish.p.mashape.com/yoda.json?text=${req.query.forcast}`,
+        headers: {
+            'X-Mashape-Key': YODA_API,
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    }
+    
+    request(options, (err, res, body) => {
         response.send(body)
         console.log(req.params);
     })
