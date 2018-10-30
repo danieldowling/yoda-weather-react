@@ -1,6 +1,6 @@
 * {
-    margin: 0;
-    padding: 0;   
+    margin: 0px;
+    padding: 0px;   
 }
 
 .btn {
@@ -13,9 +13,20 @@ p {
     color: #81a982;
 }
 
-button, input, optgroup, select, textarea {
+input {
     margin: 0 auto !important;
+    color:  #81a982 !important;
+    border: 2px solid  #81a982 !important;
+    border-radius: 4px;
+    padding-left: 2px;
 }
+
+input:focus {
+    outline: none;
+    background-color: #d5f3d5;
+}
+
+
 
 .btn-outline-secondary {
     color: #81a982 !important;
@@ -28,15 +39,19 @@ button, input, optgroup, select, textarea {
     background-color: #81a982 !important;
 }
 
-.container {
-    background-color: #81a982 !important;
-}
-
-.card {
-    height: 100vh;
-    margin-top: 10px;
-}
-
 .card-img-top {
     height: 200px;
+}
+
+.card-body {
+    height: 140px;
+    padding: 0px !important;
+    padding-top: 4px !important;
+}
+
+.jumbotron {
+    background-color: #81a982 !important;
+    padding: 0.5rem 0.5rem !important;
+    height: 100vh !important;
+    margin-bottom: 0px !important;
 }

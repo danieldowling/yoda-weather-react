@@ -32,6 +32,7 @@ class SearchWeatherForm extends React.Component {
 
   render() {
     return (
+      <div className="jumbotron">
       <div className="container">
         <div className="card">
           <img className="card-img-top" src="/src/app/images/yoda.jpg" alt="Card image cap"></img>
@@ -47,6 +48,7 @@ class SearchWeatherForm extends React.Component {
             </form>
           </div>
         </div>
+      </div>
       </div>
     );
   }
