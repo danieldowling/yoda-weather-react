@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import '../styles/search-weather-form.css';
 
 class SearchWeatherForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: '', forecast: 'Ask Yoda the weather by submitting a city above'};
+    this.state = {value: '', forecast: 'Ask Yoda the weather forcast by entering a city'};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,14 +32,22 @@ class SearchWeatherForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Search City:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-        <p>{this.state.forecast}</p>
-      </form>
+      <div className="container">
+        <div className="card">
+          <img className="card-img-top" src="/src/app/images/yoda.jpg" alt="Card image cap"></img>
+          <div className="card-body">
+            <form onSubmit={this.handleSubmit}>
+            <p>{this.state.forecast}</p>
+              <div className="input-group mb-3">
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </div>
+              <div>
+                <input className="btn btn-outline-secondary" type="submit" value="Yoda Forecast" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     );
   }
 }

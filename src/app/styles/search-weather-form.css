@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;   
+}
+
+.btn {
+    display: block !important;
+    margin: 0 auto;   
+}
+
+p {
+    text-align: center;
+    color: #81a982;
+}
+
+button, input, optgroup, select, textarea {
+    margin: 0 auto !important;
+}
+
+.btn-outline-secondary {
+    color: #81a982 !important;
+    border-color: #81a982 !important;
+}
+
+.btn-outline-secondary:hover {
+    color: #fff !important;
+    border-color: #fff !important;
+    background-color: #81a982 !important;
+}
+
+.container {
+    background-color: #81a982 !important;
+}
+
+.card {
+    height: 100vh;
+    margin-top: 10px;
+}
+
+.card-img-top {
+    height: 200px;
+}
